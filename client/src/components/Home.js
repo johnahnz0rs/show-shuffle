@@ -215,7 +215,7 @@ class Home extends React.Component {
         };
 
         const recommendation = {
-            border: '1px solid white',
+            border: '5px solid white',
             borderRadius: '8px',
             margin: 'auto',
             padding: '10px'
@@ -241,7 +241,7 @@ class Home extends React.Component {
 
 
                         {this.state.showName &&
-                        <div className="text-center mx-auto" style={recommendation}>
+                        <div className="text-center mx-auto mx-md-5" style={recommendation}>
 
                             <h3 className="align-middle">You chose <span className="font-weight-bold"><u>{this.state.showName}</u>!</span>
                                 <br /><span style={small} className="align-middle">({this.state.showTotal} total eps.)</span></h3>
