@@ -8,3 +8,7 @@
 .btn {
     white-space: normal;
 }
+body {
+    background-color: pink;
+    padding: 10px;
+}

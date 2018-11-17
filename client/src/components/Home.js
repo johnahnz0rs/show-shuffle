@@ -215,21 +215,24 @@ class Home extends React.Component {
         };
 
         const recommendation = {
-            // border: '1px solid white',
-            borderRadius: '8px'
+            border: '1px solid white',
+            borderRadius: '8px',
+            margin: 'auto',
+            padding: '10px'
         };
 
         const small = {fontSize: 'small'};
         const medium = {fontSize: 'medium', color: 'green'};
+        const large = {fontSize: 'x-large'};
 
         return(
             <React.Fragment>
-                <div className="" style={divStyle}>
+                <div className="container-fluid" style={divStyle}>
 
                     {/*<button className="btn btn-sm btn-primary" onClick={this.printState}>print state</button>*/}
 
                     <div className="text-center">
-                        <h1>Show Shuffle</h1>
+                        <h1 className="font-weight-bold">Show Shuffle</h1>
                         <h3 className="mb-5">Please allow me to pick a random episode for you to watch.
                         <br style={{color: 'green'}} /><span style={medium}>(Click a show you'd like to watch) </span></h3>
                     </div>
@@ -238,10 +241,11 @@ class Home extends React.Component {
                     {this.state.showName &&
                     <div className="text-center" style={recommendation}>
 
-                        <h3 className="align-middle">You chose <span className="font-weight-bold"><u>{this.state.showName}</u></span> <span style={small} className="align-middle">({this.state.showTotal} total eps.)</span></h3>
+                        <h3 className="align-middle">You chose <span className="font-weight-bold"><u>{this.state.showName}</u>!</span>
+                            <br /><span style={small} className="align-middle">({this.state.showTotal} total eps.)</span></h3>
 
                         {this.state.season && this.state.episode &&
-                        <p>I suggest you watch <span className="font-weight-bold"><u>Season {this.state.season} Episode {this.state.episode}</u></span>.</p>
+                        <p><span style={large}>I suggest <span className="font-weight-bold"><u>Season {this.state.season} Episode {this.state.episode}</u></span>.</span></p>
                         }
 
                     </div>
@@ -316,11 +320,6 @@ class Home extends React.Component {
                                 onClick={this.chooseShow}>
                                 Brooklyn Nine-Nine
                             </button>
-
-
-
-
-
 
                         </div>
                     </div>
