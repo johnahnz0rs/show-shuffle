@@ -1,0 +1,10 @@
+.show {
+    /*border: 1px solid red;*/
+    margin: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+.btn {
+    white-space: normal;
+}
