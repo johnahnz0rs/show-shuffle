@@ -224,99 +224,102 @@ class Home extends React.Component {
         const small = {fontSize: 'small'};
         const medium = {fontSize: 'medium', color: 'green'};
         const large = {fontSize: 'x-large'};
+        const fixedTop = {zIndex: '1000'};
 
         return(
             <React.Fragment>
                 <div className="container-fluid" style={divStyle}>
 
                     {/*<button className="btn btn-sm btn-primary" onClick={this.printState}>print state</button>*/}
+                    {/*<div className="sticky-top d-block" style={fixedTop}>*/}
+                    <div className="">
+                        <div className="text-center">
+                            <h1 className="font-weight-bold">Show Shuffle</h1>
+                            <h3 className="mb-5">Please allow me to pick a random episode for you to watch.
+                            <br style={{color: 'green'}} /><span style={medium}>(Click a show you'd like to watch) </span></h3>
+                        </div>
 
-                    <div className="text-center">
-                        <h1 className="font-weight-bold">Show Shuffle</h1>
-                        <h3 className="mb-5">Please allow me to pick a random episode for you to watch.
-                        <br style={{color: 'green'}} /><span style={medium}>(Click a show you'd like to watch) </span></h3>
-                    </div>
 
+                        {this.state.showName &&
+                        <div className="text-center mx-auto" style={recommendation}>
 
-                    {this.state.showName &&
-                    <div className="text-center" style={recommendation}>
+                            <h3 className="align-middle">You chose <span className="font-weight-bold"><u>{this.state.showName}</u>!</span>
+                                <br /><span style={small} className="align-middle">({this.state.showTotal} total eps.)</span></h3>
 
-                        <h3 className="align-middle">You chose <span className="font-weight-bold"><u>{this.state.showName}</u>!</span>
-                            <br /><span style={small} className="align-middle">({this.state.showTotal} total eps.)</span></h3>
+                            {this.state.season && this.state.episode &&
+                            <p><span style={large}>I suggest <span className="font-weight-bold"><u>Season {this.state.season} Episode {this.state.episode}</u></span>.</span></p>
+                            }
 
-                        {this.state.season && this.state.episode &&
-                        <p><span style={large}>I suggest <span className="font-weight-bold"><u>Season {this.state.season} Episode {this.state.episode}</u></span>.</span></p>
+                        </div>
                         }
-
                     </div>
-                    }
 
 
-                    <div className="row justify-content-center">
+                    <div className="row justify-content-center text-center">
                         <div className="col-9 text-center">
                             <button
                                 name="parksAndRec"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 Parks and Rec
                             </button>
                             <button
                                 name="theOffice"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 The Office
                             </button>
                             <button
                                 name="ventureBros"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 Venture Bros.
                             </button>
                             <button
                                 name="futurama"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 Futurama
                             </button>
                             <button
                                 name="southPark"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 South Park
                             </button>
                             <button
                                 name="kingOfTheHill"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 King of the Hill
                             </button>
                             <button
                                 name="breakingBad"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 Breaking Bad
                             </button>
                             <button
                                 name="theWire"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 The Wire
                             </button>
                             <button
                                 name="sopranos"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 Sopranos
                             </button>
                             <button
                                 name="seinfeld"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 Seinfeld
                             </button>
                             <button
                                 name="brooklynNineNine"
-                                className="btn btn-lg btn-outline-light col-md-3 col-12 show"
+                                className="btn btn-lg btn-outline-light m-md-3 mx-auto col-md-3 col-12 show"
                                 onClick={this.chooseShow}>
                                 Brooklyn Nine-Nine
                             </button>
