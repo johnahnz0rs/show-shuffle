@@ -1,16 +1,43 @@
-showShuffle
+#showShuffle
+#####brought to you by johnahnz0rs & z0rs, Inc.
 
-want to watch an episode of a beloved show?
-showShuffle will suggest a random episode to watch.
-
-
-
-
-- [ ] king of the hill
-- [ ] futurama
-- [ ] south park
+- Want to watch an episode of a beloved show?
+- Can't decide which episode to watch?
+- Show Shuffle will suggest a random episode to watch.
 
 
+
+
+- [x] king of the hill
+- [x] futurama
+- [x] south park
+- [x] parks and rec
+- [x] the office
+- [x] venture bros.
+- [x] breaking bad
+- [x] the wire
+- [x] sopranos
+- [x] seinfeld
+- [x] brookyln nine-nine
+
+
+
+
+---
+#TO-DO LIST
+
+- [ ] install [unofficial imdb api](https://www.npmjs.com/package/imdb-api)
+- [ ] form: let ppl search shows by title (imdb api)
+- [ ] re-work front-end logic: 
+    - [ ] pull show details from imdb api: 
+        - [ ] show title, 
+        - [ ] pic, 
+        - [ ] seasons, 
+        - [ ] episodes per season, 
+        - [ ] episode title, 
+        - [ ] air date, 
+        - [ ] episode length, 
+        - [ ] etc. 
 
 
 
