@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 
 
 // serve react files from 'dist' directory
-app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 
 // load and use j00r routes files
@@ -25,6 +25,6 @@ app.use(require('./server/config/catch-all.routes.js'));
 
 
 // start server
-app.listen(process.env.PORT || 5000, () => {
+app.listen(process.env.PORT, () => {
     console.log('*** lol johnahnz0rs is l33t on port 5000 ***');
 });
