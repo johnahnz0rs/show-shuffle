@@ -1,14 +1,41 @@
+
+body {
+    /*background-color: pink;*/
+    /*padding-top: 500px;*/
+    padding-top: 50px;
+}
+
 .show {
     /*border: 1px solid red;*/
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /*margin: 20px;*/
     padding-top: 10px;
     padding-bottom: 10px;
     font-weight: bold;
+    color: black;
+    /*vertical-align: middle;*/
 }
+
 .btn {
     white-space: normal;
 }
-body {
-    background-color: pink;
-    padding: 10px;
+
+.my-background  {
+    content: '';
+    background-image: url("./assets/dog_truck 1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    position: absolute;
+    padding-top: 20px;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.7;
+    z-Index: -1;
+    /*min-height: 100%;*/
+    height: 300vh;
 }

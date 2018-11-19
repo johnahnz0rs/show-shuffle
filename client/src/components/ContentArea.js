@@ -18,12 +18,13 @@ class ContentArea extends React.Component {
 
     render() {
 
-
         return(
             <React.Fragment>
+                <div className="root-div">
 
-                <Home/>
+                    <Home/>
 
+                </div>
             </React.Fragment>
         );
     }
