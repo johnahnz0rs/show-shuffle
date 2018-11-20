@@ -12,7 +12,7 @@ class Home extends React.Component {
             show: null,
             showName: null,
             season: null,
-            episodes: null,
+            episode: null,
             showTotal: null,
             shows: [
                 {
@@ -177,19 +177,36 @@ class Home extends React.Component {
                     ]
                 },
             ],
+            search: '',
+            searchHits: null,
         };
         //declare methods here
-        this.chooseShow = this.chooseShow.bind(this);
         // this.printState = this.printState.bind(this);
+        this.clearState = this.clearState.bind(this);
+        this.chooseShow = this.chooseShow.bind(this);
+        this.testButton = this.testButton.bind(this);
+        this.searchHandler = this.searchHandler.bind(this);
+        this.findShow = this.findShow.bind(this);
+        this.search = this.search.bind(this);
+        this.chooseRando = this.chooseRando.bind(this);
+        this.clickYourShow = this.clickYourShow.bind(this);
     }
 
     componentDidMount() {
         // onInit
     }
 
-    // printState = () => console.log('*** Home.state ***', this.state);
+    printState = () => console.log('*** Home.state ***', this.state);
+
+    clearState = () => {
+        this.setState({show: null});
+        this.setState({showName: null});
+        this.setState({season: null});
+        this.setState({episode: null});
+    };
 
     chooseShow = (e) => {
+        this.clearState();
         // @DESC eventHandler when user clicks a show/button;
         const name = e.target.name;
         const show = this.state.shows.find(obj => obj.shortName === name);
@@ -202,7 +219,9 @@ class Home extends React.Component {
     };
 
     chooseEpisode = (show) => {
-        // @DESC picks a random season, episode for given show && this.setState;
+        // @DESC -- make sure whichever function calls this function also calls this.clearState prior to...
+        // @DESC this is a callback function. picks a random season, episode for given show && this.setState;
+        console.log('*** starting chooseEpisode() ***');
 
         // pick a season at random
         const season = Math.floor(Math.random() * show.episodes.length) + 1;
@@ -215,10 +234,66 @@ class Home extends React.Component {
 
         // get total episode count for show
         let count = 0;
-        for (let s of show.episodes) {
-            count += s.episodes;
+        for (let s of show.episodes) { // in each season of the show (found in show.episodes obj)
+            count += s.episodes; // increase the count by the value of show.episodes[i].episodes
         }
         this.setState({showTotal: count});
+    };
+
+    testButton = () => {
+        console.log('*** start testButton() ***');
+    };
+
+    searchHandler = (e) => {
+        const search = e.target.value;
+        this.setState({search: search});
+    };
+
+    findShow = () => {
+        const search = encodeURI(this.state.search);
+        console.log('*** starting findShow() ***', search);
+        fetch(`/search/${search}`)
+            .then(res => res.json())
+            .then(hits => {
+                const temp = JSON.parse(hits);
+                const shows = temp.results;
+                // console.log(shows);
+                for (let i of shows) {
+                    if (i.poster_path) {
+                        i.poster_path = 'https://image.tmdb.org/t/p/original' + i.poster_path;
+                    }
+                }
+                this.setState({searchHits: shows});
+            })
+            .catch(err => console.log(err));
+    };
+
+    search = () => {
+        // make a call to the backend that calls the movie dbase api;
+        console.log('*** search() testing backend ***');
+        fetch('/sample')
+            .then(res => res.json())
+            .then(something => console.log(something))
+            .catch(err => console.log(err));
+    };
+
+    chooseRando = () => {
+        console.log('*** starting chooseRando() ***');
+        this.clearState();
+
+        const rando = Math.floor(Math.random() * this.state.shows.length) + 1;
+        const show = this.state.shows[rando];
+        const showName = show.name;
+
+        this.setState({show: show});
+        this.setState({showName: showName});
+
+        this.chooseEpisode(show);
+    };
+
+    clickYourShow = (e) => {
+        const what = e.target.name;
+        console.log('*** clickYourShow() ***', what);
     };
 
     render() {
@@ -226,11 +301,14 @@ class Home extends React.Component {
         const recommendation = {
             border: '5px solid black',
             borderRadius: '8px',
-            margin: '0 auto',
-            padding: '20px',
+            // margin: '0 auto',
+            // padding: '20px',
+            height: '250px',
+            width: '385px',
+            // padding: 'auto',
         };
         const small = {fontSize: 'small'};
-        const header = {marginBottom: '150px'};
+        // const header = {marginBottom: '150px'};
         // const medium = {};
         // const whoa = {};
 
@@ -247,43 +325,110 @@ class Home extends React.Component {
                 {/* content */}
                 <div className="container-fluid my-background text-center">
 
-
-                    {/* header */}
-                    <div className="text-right mt-1" style={header}>
-                        <a tabIndex="0" className="btn btn-sm btn-light" role="button" data-toggle="popover" data-trigger="focus" title="wutup, homey?" data-content="let's pick something to watch. click a show to begin">?</a>
+                    {/* spacer */}
+                    <div className="d-block mb-5 text-left" style={{minHeight: '200px'}}>
+                        <button className="btn btn-sm btn-primary d-inline-block mr-3" onClick={this.testButton}>Test Button 1</button>
+                        <button className="btn btn-sm btn-primary d-inline-block mr-3" onClick={this.printState}>Print State</button>
                     </div>
 
 
 
                     {/* the recommendation */}
                     {this.state.showName && this.state.season && this.state.episode &&
-                    <div className="container-fluid row justify-content-center my-5 mx-auto align-middle">
-                        <div className="col-8 col-md-5 d-block text-center btn-light" style={recommendation}>
-                            <h3 className="align-middle">
-                                You chose<br />
-                                <span className="font-weight-bold"><u>{this.state.showName}</u></span>
-                            </h3>
-                            <p style={small} className="align-middle">({this.state.showTotal} total eps)</p>
-                            <h3 className="font-weight-bold"><u>Season {this.state.season} Episode {this.state.episode}</u></h3>
-                        </div>
+                    <div className="container-fluid row my-4 mx-auto btn-light" style={recommendation}>
+                        <h3 className="m-auto p-auto">
+                            You chose<br />
+                            <span className="font-weight-bold"><u>{this.state.showName}</u></span><br />
+                            <span style={small} className="">({this.state.showTotal} total eps)</span><br />&nbsp;<br />
+                            <span className="font-weight-bold"><u>Season {this.state.season} Episode {this.state.episode}</u></span>
+                        </h3>
                     </div>
                     }
                     {/* end recommendation */}
 
 
+
+
+
+
+
+                    {/* search */}
+                    <div className="p-4" style={{border: '1px solid black'}}>
+                        <input type="text" name="search" placeholder="search for show" onChange={this.searchHandler} /><button className="btn btn-sm btn-success ml-3" onClick={this.findShow}>Go</button>
+
+                        <button className="btn btn-sm btn-primary d-block mt-3 mx-auto" style={{width: '50%'}} onClick={this.chooseRando}>Gimme Rando</button>
+                    </div>
+                    {/* end search */}
+
+
+
+
+                    {/* search results */}
+                    {this.state.searchHits &&
+                    <div className="container-fluid" style={{}}>
+                        <p style={{backgroundColor: 'white'}}>click your show</p>
+
+                        {this.state.searchHits.map(show => {
+
+                            return(<React.Fragment>
+
+                                {/*backdrop_path: "/5isj5gcGT0RrJ7uMO5pnd0AXXC.jpg"*/}
+                                {/*first_air_date: "2005-03-24"*/}
+                                {/*genre_ids: [35]*/}
+                                {/*id: 2316*/}
+                                {/*name: "The Office"*/}
+                                {/*origin_country: ["US"]*/}
+                                {/*original_language: "en"*/}
+                                {/*original_name: "The Office"*/}
+                                {/*overview: "The everyday lives of office employees in the Scranton, Pennsylvania branch of the fictional Dunder Mifflin Paper Company."*/}
+                                {/*popularity: 21.503*/}
+                                {/*poster_path: "/qWnJzyZhyy74gjpSjIXWmuk0ifX.jpg"*/}
+                                {/*vote_average: 8.05*/}
+                                {/*vote_count: 499*/}
+
+                                {show.poster_path && show.first_air_date && show.id &&
+                                    <a href="#">
+                                        <div className="col-12 col-md-2 btn-light d-inline-block text-center my-1 mx-auto mx-md-3 p-1" style={{border: '1px solid black', verticalAlign: 'top'}} name={show.id} onClick={this.clickYourShow}>
+                                            <img src={show.poster_path} name={show.id} alt="pic" className="" style={{width: '75%', maxWidth: '400px', height: 'auto'}} />
+                                            <h3 className="" style={{fontSize: 'x-large'}}>{show.name}</h3>
+                                            <p>
+                                                First Air Date: {show.first_air_date}, [{show.origin_country}]
+                                                <br /><span className="font-weight-bold">{show.vote_average}</span> (total votes: {show.vote_count})
+                                            </p>
+                                        </div>
+                                    </a>
+                                }
+
+                            </React.Fragment>);
+                        })}
+
+
+                    </div>
+                    }
+
+
+                    {/* end search results*/}
+
+
+
+
+
+
+
                     {/* popular shows */}
                     {this.state.shows &&
-                        <div className="container-fluid row my-5 mx-auto">
+                        <div className="container-fluid row my-2 mx-auto d-flex align-items-center" style={{}}>
 
                             {this.state.shows.map(show => {
                                 return (
                                     <React.Fragment>
 
                                         {/* mobile view */}
-                                        <div className="d-inline-block d-md-none col-6 mx-auto">
+                                        <div className="d-flex-column d-md-none col-4">
                                             <a href="#"
+                                               role="button"
                                                name={show.shortName}
-                                               className="btn btn-lg btn-light mx-auto show"
+                                               className="btn btn-sm btn-light mx-auto my-3 py-3 d-block align-self-center" style={{height: '75px', width: '100px'}}
                                                onClick={this.chooseShow}>
                                                 {show.name}
                                             </a>
@@ -292,8 +437,9 @@ class Home extends React.Component {
                                         {/* desktop view */}
                                         <div className="d-none d-md-inline-block col-4">
                                             <a href="#"
+                                               role="button"
                                                name={show.shortName}
-                                               className="btn btn-lg btn-light mx-auto show d-block"
+                                               className="btn btn-lg btn-light mx-auto my-3 py-3 d-block"
                                                onClick={this.chooseShow}>
                                                 {show.name}
                                             </a>

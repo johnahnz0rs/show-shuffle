@@ -25,6 +25,6 @@ app.use(require('./server/config/catch-all.routes.js'));
 
 
 // start server
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
     console.log('*** lol johnahnz0rs is l33t on port 5000 ***');
 });
