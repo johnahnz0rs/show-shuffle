@@ -107,6 +107,18 @@ class Home extends React.Component {
     };
 
     findShowsByQuery = () => {
+        const blankSuggestion = {
+            id: null,
+                collection: null,
+                name: null,
+                randoSeason: null,
+                randoEpisode: null,
+                poster: null,
+                totalEps: null,
+        };
+        this.setState({suggestion: blankSuggestion});
+
+
         const search = encodeURI(this.state.search);
         console.log('*** starting findShow() ***', search);
         fetch(`/search/${search}`)
