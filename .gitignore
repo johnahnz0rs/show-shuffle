@@ -31,3 +31,4 @@ yarn-error.log*
 #johnahnz0rs
 /.idea
 /venv
+/client/src/components/Misc.js

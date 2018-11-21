@@ -9,176 +9,32 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: null,
-            showName: null,
-            season: null,
-            episode: null,
-            showTotal: null,
-            shows: [
-                {
-                    shortName: 'futurama',
-                    name: 'Futurama',
-                    episodes: [
-                        {season: 1, episodes: 13},
-                        {season: 2, episodes: 19},
-                        {season: 3, episodes: 22},
-                        {season: 4, episodes: 18},
-                        {season: 5, episodes: 16},
-                        {season: 6, episodes: 26},
-                        {season: 7, episodes: 26}
-                    ]
-                },
-                {
-                    shortName: 'theOffice',
-                    name: 'The Office',
-                    episodes: [
-                        {season: 1, episodes: 6},
-                        {season: 2, episodes: 22},
-                        {season: 3, episodes: 25},
-                        {season: 4, episodes: 19},
-                        {season: 5, episodes: 28},
-                        {season: 6, episodes: 26},
-                        {season: 7, episodes: 26},
-                        {season: 8, episodes: 24},
-                        {season: 9, episodes: 25}
-                    ]
-                },
-                {
-                    shortName: 'parksAndRec',
-                    name: 'Parks and Rec',
-                    episodes: [
-                        {season: 1, episodes: 6},
-                        {season: 2, episodes: 24},
-                        {season: 3, episodes: 16},
-                        {season: 4, episodes: 22},
-                        {season: 5, episodes: 22},
-                        {season: 6, episodes: 22},
-                        {season: 7, episodes: 13}
-                    ]
-                },
-                {
-                    shortName: 'kingOfTheHill',
-                    name: 'King of the Hill',
-                    episodes: [
-                        {season: 1, episodes: 12},
-                        {season: 2, episodes: 23},
-                        {season: 3, episodes: 25},
-                        {season: 4, episodes: 24},
-                        {season: 5, episodes: 20},
-                        {season: 6, episodes: 22},
-                        {season: 7, episodes: 23},
-                        {season: 8, episodes: 22},
-                        {season: 9, episodes: 15},
-                        {season: 10, episodes: 15},
-                        {season: 11, episodes: 12},
-                        {season: 12, episodes: 22},
-                        {season: 13, episodes: 24}
-                    ]
-                },
-                {
-                    shortName: 'ventureBros',
-                    name: 'The Venture Bros.',
-                    episodes: [
-                        {season: 1, episodes: 13},
-                        {season: 2, episodes: 13},
-                        {season: 3, episodes: 13},
-                        {season: 4, episodes: 16},
-                        {season: 5, episodes: 8},
-                        {season: 6, episodes: 8},
-                        {season: 7, episodes: 10}
-                    ]
-                },
-                {
-                    shortName: 'theWire',
-                    name: 'The Wire',
-                    episodes: [
-                        {season: 1, episodes: 13},
-                        {season: 2, episodes: 12},
-                        {season: 3, episodes: 12},
-                        {season: 4, episodes: 13},
-                        {season: 5, episodes: 10}
-                    ]
-                },
-                {
-                    shortName: 'southPark',
-                    name: 'South Park',
-                    episodes: [
-                        {season: 1, episodes: 13},
-                        {season: 2, episodes: 18},
-                        {season: 3, episodes: 17},
-                        {season: 4, episodes: 17},
-                        {season: 5, episodes: 14},
-                        {season: 6, episodes: 17},
-                        {season: 7, episodes: 15},
-                        {season: 8, episodes: 14},
-                        {season: 9, episodes: 14},
-                        {season: 10, episodes: 14},
-                        {season: 11, episodes: 14},
-                        {season: 12, episodes: 14},
-                        {season: 13, episodes: 14},
-                        {season: 14, episodes: 14},
-                        {season: 15, episodes: 14},
-                        {season: 16, episodes: 14},
-                        {season: 17, episodes: 10},
-                        {season: 18, episodes: 10},
-                        {season: 19, episodes: 10},
-                        {season: 20, episodes: 10},
-                        {season: 21, episodes: 10},
-                        {season: 22, episodes: 10}
-                    ]
-                },
-                {
-                    shortName: 'breakingBad',
-                    name: 'Breaking Bad',
-                    episodes: [
-                        {season: 1, episodes: 7},
-                        {season: 2, episodes: 13},
-                        {season: 3, episodes: 13},
-                        {season: 4, episodes: 13},
-                        {season: 5, episodes: 16}
-                    ]
-                },
-                {
-                    shortName: 'sopranos',
-                    name: 'Sopranos',
-                    episodes: [
-                        {season: 1, episodes: 13},
-                        {season: 2, episodes: 13},
-                        {season: 3, episodes: 13},
-                        {season: 4, episodes: 13},
-                        {season: 5, episodes: 13},
-                        {season: 6, episodes: 21}
-                    ]
-                },
-                {
-                    shortName: 'seinfeld',
-                    name: 'Seinfeld',
-                    episodes: [
-                        {season: 1, episodes: 5},
-                        {season: 2, episodes: 12},
-                        {season: 3, episodes: 23},
-                        {season: 4, episodes: 24},
-                        {season: 5, episodes: 22},
-                        {season: 6, episodes: 24},
-                        {season: 7, episodes: 24},
-                        {season: 8, episodes: 22},
-                        {season: 9, episodes: 24}
-                    ]
-                },
-                {
-                    shortName: 'brooklynNineNine',
-                    name: 'Brooklyn Nine-Nine',
-                    episodes: [
-                        {season: 1, episodes: 22},
-                        {season: 2, episodes: 23},
-                        {season: 3, episodes: 23},
-                        {season: 4, episodes: 22},
-                        {season: 5, episodes: 22}
-                    ]
-                },
-            ],
+            suggestion: {
+                id: null,
+                collection: null,
+                name: null,
+                randoSeason: null,
+                randoEpisode: null,
+                poster: null,
+                totalEps: null,
+            },
             search: '',
             searchHits: null,
+            // show: null,
+            shows: [
+                {name: 'Futurama', id: '615'},
+                {name: 'The Office', id: '2316'},
+                {name: 'Parks And Rec', id: '8592'},
+                {name: 'King of The Hill', id: '2122'},
+                {name: 'Venture Bros', id: '2418'},
+                {name: 'The Wire', id: '1438'},
+                {name: 'South Park', id: '2190'},
+                {name: 'Breaking Bad', id: '1396'},
+                {name: 'The Sopranos', id: '1398'},
+                {name: 'Seinfeld', id: '1400'},
+                {name: 'Brooklyn Nine Nine', id: '48891'},
+                {name: 'Peaky Blinders', id: '60574'},
+            ],
         };
         //declare methods here
         // this.printState = this.printState.bind(this);
@@ -186,10 +42,11 @@ class Home extends React.Component {
         this.chooseShow = this.chooseShow.bind(this);
         this.testButton = this.testButton.bind(this);
         this.searchHandler = this.searchHandler.bind(this);
-        this.findShow = this.findShow.bind(this);
-        this.search = this.search.bind(this);
+        this.findShowsByQuery = this.findShowsByQuery.bind(this);
+        this.getShowDetails = this.getShowDetails.bind(this);
         this.chooseRando = this.chooseRando.bind(this);
         this.clickYourShow = this.clickYourShow.bind(this);
+        this.clickJ00rShow = this.clickJ00rShow.bind(this);
     }
 
     componentDidMount() {
@@ -199,14 +56,14 @@ class Home extends React.Component {
     printState = () => console.log('*** Home.state ***', this.state);
 
     clearState = () => {
-        this.setState({show: null});
-        this.setState({showName: null});
-        this.setState({season: null});
-        this.setState({episode: null});
+        // this.setState({show: null});
+        // this.setState({showName: null});
+        // this.setState({season: null});
+        // this.setState({episode: null});
     };
 
     chooseShow = (e) => {
-        this.clearState();
+        // this.clearState();
         // @DESC eventHandler when user clicks a show/button;
         const name = e.target.name;
         const show = this.state.shows.find(obj => obj.shortName === name);
@@ -249,7 +106,7 @@ class Home extends React.Component {
         this.setState({search: search});
     };
 
-    findShow = () => {
+    findShowsByQuery = () => {
         const search = encodeURI(this.state.search);
         console.log('*** starting findShow() ***', search);
         fetch(`/search/${search}`)
@@ -262,15 +119,18 @@ class Home extends React.Component {
                     if (i.poster_path) {
                         i.poster_path = 'https://image.tmdb.org/t/p/original' + i.poster_path;
                     }
+                    if (i.first_air_date) {
+                        i.year = i.first_air_date.substring(0,4)
+                    }
                 }
                 this.setState({searchHits: shows});
             })
             .catch(err => console.log(err));
     };
 
-    search = () => {
+    getShowDetails = (showID) => {
         // make a call to the backend that calls the movie dbase api;
-        console.log('*** search() testing backend ***');
+        console.log('*** search() testing backend ***', showID);
         fetch('/sample')
             .then(res => res.json())
             .then(something => console.log(something))
@@ -279,16 +139,17 @@ class Home extends React.Component {
 
     chooseRando = () => {
         console.log('*** starting chooseRando() ***');
-        this.clearState();
+        // this.clearState();
 
         const rando = Math.floor(Math.random() * this.state.shows.length) + 1;
-        const show = this.state.shows[rando];
-        const showName = show.name;
+        const showID = this.state.shows[rando].id;
+        // const show = this.state.shows[rando];
+        // const showName = show.name;
+        this.clickJ00rShow(showID);
+        // this.setState({show: show});
+        // this.setState({showName: showName});
 
-        this.setState({show: show});
-        this.setState({showName: showName});
-
-        this.chooseEpisode(show);
+        // this.chooseEpisode(show);
     };
 
     clickYourShow = (e) => {
@@ -296,15 +157,90 @@ class Home extends React.Component {
         console.log('*** clickYourShow() ***', what);
     };
 
+    clickJ00rShow = (showID) => {
+        console.log('*** clickJ00rShow() ***', showID);
+        // this.getShowDetails(showID);
+        fetch(`/show/${showID}`)
+            .then(res => res.json())
+            .then(sth => {
+                const showDetails = JSON.parse(sth.body);
+                console.log(showDetails);
+
+
+                // THIS.STATE
+                // suggestion: {
+                //     x id: null,
+                //     x collection: null,
+                //     x name: null,
+                //     randoSeason: null,
+                //     randoEpisode: null,
+                //     x poster: null,
+                //     x totalEps: null,
+                // },
+
+                // id, name
+                let tempSuggestion = {
+                    id: showDetails.id,
+                    name: showDetails.name,
+                };
+
+                // collection
+                showDetails.seasons[0].name.toLowerCase().includes('special') ? tempSuggestion.collection = showDetails.seasons.slice(1) : tempSuggestion.collection = showDetails.seasons;
+
+                // poster
+                if (showDetails.poster_path) {
+                    tempSuggestion.poster = 'https://image.tmdb.org/t/p/original' + showDetails.poster_path;
+                }
+
+                // total eps
+                let count = 0;
+                for (let season of tempSuggestion.collection) {
+                    season.episode_count = parseInt(season.episode_count);
+                    count += season.episode_count;
+                    // console.log(count);
+                }
+                // console.log('final count', count);
+                tempSuggestion.totalEps = count;
+
+                // randoSeason
+                tempSuggestion.randoSeason = Math.floor(Math.random() * tempSuggestion.collection.length) + 1;
+
+                // randoEpisode
+                tempSuggestion.randoEpisode = Math.floor(Math.random() * tempSuggestion.collection[tempSuggestion.randoSeason-1].episode_count);
+
+                //
+                // // set name
+                // if (showDetails.name) {
+                //     this.setState({showName: showDetails.name});
+                // }
+                //
+                // // rando pick season
+                // const randoSeason = Math.floor(Math.random() * showDetailsSeasons.length) + 1;
+                // this.setState({showSeason: randoSeason});
+                //
+                // // rando pic episode from that season
+                // const randoEpisode = Math.floor(Math.random() * showDetailsSeasons[randoSeason-1].episode_count);
+                // this.setState({showEpisode: randoEpisode});
+
+
+
+                console.log('*** tempSuggestion ***', tempSuggestion);
+                this.setState({suggestion: tempSuggestion});
+            })
+            .catch(err => console.log(err));
+    };
+
     render() {
 
         const recommendation = {
             border: '5px solid black',
             borderRadius: '8px',
+            width: '95%',
+            maxWidth: '600px'
             // margin: '0 auto',
             // padding: '20px',
-            height: '250px',
-            width: '385px',
+            // height: '250px',
+            // width: '385px',
             // padding: 'auto',
         };
         const small = {fontSize: 'small'};
@@ -315,6 +251,8 @@ class Home extends React.Component {
         return(<React.Fragment>
             <div className="">
 
+                {/*<div className="my-background">*/}
+
                 <a name="recommendation"></a>
                 {/*<button className="btn btn-sm btn-primary" onClick={this.printState}>print state</button>*/}
 
@@ -323,25 +261,34 @@ class Home extends React.Component {
                 <MyNavbar />
 
                 {/* content */}
-                <div className="container-fluid my-background text-center">
+                <div className="container-fluid  text-center">
 
                     {/* spacer */}
                     <div className="d-block mb-5 text-left" style={{minHeight: '200px'}}>
-                        <button className="btn btn-sm btn-primary d-inline-block mr-3" onClick={this.testButton}>Test Button 1</button>
-                        <button className="btn btn-sm btn-primary d-inline-block mr-3" onClick={this.printState}>Print State</button>
+                        {/*<button className="btn btn-sm btn-primary d-inline-block mr-3" onClick={this.testButton}>Test Button 1</button>*/}
+                        {/*<button className="btn btn-sm btn-primary d-inline-block mr-3" onClick={this.printState}>Print State</button>*/}
                     </div>
 
 
 
                     {/* the recommendation */}
-                    {this.state.showName && this.state.season && this.state.episode &&
-                    <div className="container-fluid row my-4 mx-auto btn-light" style={recommendation}>
-                        <h3 className="m-auto p-auto">
-                            You chose<br />
-                            <span className="font-weight-bold"><u>{this.state.showName}</u></span><br />
-                            <span style={small} className="">({this.state.showTotal} total eps)</span><br />&nbsp;<br />
-                            <span className="font-weight-bold"><u>Season {this.state.season} Episode {this.state.episode}</u></span>
-                        </h3>
+                    {/*{this.state.showName && this.state.showSeason && this.state.showEpisode && this.state.showPoster &&*/}
+                    {this.state.suggestion.id &&
+                    <div className="row my-4 mx-auto btn-light" style={recommendation}>
+
+                        <div className="col-6">
+                            <img src={this.state.suggestion.poster} alt={this.state.suggestion.name} className="mt-2" style={{width: '95%', maxWidth: '500px'}} />
+                        </div>
+
+                        <div className="col-6 mt-2 d-flex-column">
+                            <h3 className="mx-auto p-auto" style={{verticalAlign: 'middle'}}>
+                                You chose<br />
+                                <span className="font-weight-bold"><u>{this.state.suggestion.name}</u></span><br />
+                                <span style={small} className="">({this.state.suggestion.totalEps} total eps)</span><br />&nbsp;<br />
+                                <span className="font-weight-bold"><u>Season {this.state.suggestion.randoSeason} Episode {this.state.suggestion.randoEpisode}</u></span>
+                            </h3>
+                        </div>
+
                     </div>
                     }
                     {/* end recommendation */}
@@ -353,10 +300,10 @@ class Home extends React.Component {
 
 
                     {/* search */}
-                    <div className="p-4" style={{border: '1px solid black'}}>
-                        <input type="text" name="search" placeholder="search for show" onChange={this.searchHandler} /><button className="btn btn-sm btn-success ml-3" onClick={this.findShow}>Go</button>
+                    <div className="py-4" style={{border: '2px solid white', borderRadius: '5px'}}>
+                        <input type="text" name="search" style={{width: '65%'}} placeholder="search for show" onChange={this.searchHandler} /><button className="btn btn-sm btn-success ml-3" onClick={this.findShowsByQuery}>Search</button>
 
-                        <button className="btn btn-sm btn-primary d-block mt-3 mx-auto" style={{width: '50%'}} onClick={this.chooseRando}>Gimme Rando</button>
+                        <button className="btn btn-sm btn-primary d-block mt-3 mx-auto" style={{width: '200px'}} onClick={this.chooseRando}>Gimme a Rando</button>
                     </div>
                     {/* end search */}
 
@@ -386,16 +333,23 @@ class Home extends React.Component {
                                 {/*vote_average: 8.05*/}
                                 {/*vote_count: 499*/}
 
-                                {show.poster_path && show.first_air_date && show.id &&
-                                    <a href="#">
-                                        <div className="col-12 col-md-2 btn-light d-inline-block text-center my-1 mx-auto mx-md-3 p-1" style={{border: '1px solid black', verticalAlign: 'top'}} name={show.id} onClick={this.clickYourShow}>
-                                            <img src={show.poster_path} name={show.id} alt="pic" className="" style={{width: '75%', maxWidth: '400px', height: 'auto'}} />
-                                            <h3 className="" style={{fontSize: 'x-large'}}>{show.name}</h3>
-                                            <p>
-                                                First Air Date: {show.first_air_date}, [{show.origin_country}]
-                                                <br /><span className="font-weight-bold">{show.vote_average}</span> (total votes: {show.vote_count})
+                                {show.poster_path && show.year && show.id &&
+                                    <a key={show.id} href="#" className="col-12 col-md-3 mb-5 text-center d-inline-block" style={{verticalAlign: 'top'}} onClick={() => this.clickJ00rShow(show.id)}>
+                                        {/*<div className="col-12 col-md-2 btn-light d-inline-block text-center my-1 mx-auto mx-md-3 p-1" style={{border: '1px solid black', verticalAlign: 'top'}}>*/}
+                                            <img src={show.poster_path} alt={show.name} className="mb-2" style={{width: '75%', maxWidth: '200px', height: 'auto'}}/>
+                                            <p className="" style={{color: 'white', lineHeight: '15px'}}>
+                                                <span style={{fontSize: 'x-large'}} className="font-weight-bold">{show.name}</span><br />
+                                                {show.year} ({show.origin_country})<br />
+                                                <span className="font-weight-bold">{show.vote_average}</span> / {show.vote_count} votes
                                             </p>
-                                        </div>
+
+
+                                            {/*<h3 className="" style={{fontSize: 'x-large'}} name={show.id}>{show.name}</h3>*/}
+                                            {/*<p name={show.id}>*/}
+                                                {/*First Air Date: {show.first_air_date}, [{show.origin_country}]*/}
+                                                {/*<br /><span className="font-weight-bold">{show.vote_average}</span> (total votes: {show.vote_count})*/}
+                                            {/*</p>*/}
+                                        {/*</div>*/}
                                     </a>
                                 }
 
@@ -424,24 +378,38 @@ class Home extends React.Component {
                                     <React.Fragment>
 
                                         {/* mobile view */}
-                                        <div className="d-flex-column d-md-none col-4">
+                                        {/*<div className="d-flex-column d-sm-none col-4 container">*/}
+                                            {/*<a href="#"*/}
+                                               {/*role="button"*/}
+                                               {/*name={show.shortName}*/}
+                                               {/*className="btn btn-sm mx-auto my-4 py-auto d-block align-self-center font-weight-bold"*/}
+                                               {/*style={{maxHeight: '70px', minHeight: '40px', width: '100px', backgroundColor: 'pink', color: 'white'}}*/}
+                                               {/*onClick={this.chooseShow}>*/}
+                                                {/*{show.name}*/}
+                                            {/*</a>*/}
+                                        {/*</div>*/}
+
+                                        <div key={show.id} className="d-flex-column d-sm-none col-6 container" name={show.id}>
                                             <a href="#"
                                                role="button"
-                                               name={show.shortName}
-                                               className="btn btn-sm btn-light mx-auto my-3 py-3 d-block align-self-center" style={{height: '75px', width: '100px'}}
-                                               onClick={this.chooseShow}>
-                                                {show.name}
+                                               className="mx-auto my-4 d-block align-self-center"
+                                               style={{color: "pink"}}
+                                               onClick={() => {this.clickJ00rShow(show.id)}}>
+                                                <span className="pop-show font-weight-bold" style={{fontSize: 'x-large'}}>{show.name}</span>
                                             </a>
                                         </div>
 
+
+
                                         {/* desktop view */}
-                                        <div className="d-none d-md-inline-block col-4">
+                                        <div className="d-none d-sm-inline-block col-4">
                                             <a href="#"
                                                role="button"
-                                               name={show.shortName}
-                                               className="btn btn-lg btn-light mx-auto my-3 py-3 d-block"
-                                               onClick={this.chooseShow}>
-                                                {show.name}
+                                               name={show.name}
+                                               className="mx-auto my-4 d-block pop-show"
+                                               style={{color: 'pink'}}
+                                               onClick={() => this.clickJ00rShow(show.id)}>
+                                                <h1>{show.name}</h1>
                                             </a>
                                         </div>
                                     </React.Fragment>
@@ -453,7 +421,7 @@ class Home extends React.Component {
                 </div>
                 {/* end content > .my-background */}
 
-
+                {/*</div>*/}
             </div>
         </React.Fragment>);
     }

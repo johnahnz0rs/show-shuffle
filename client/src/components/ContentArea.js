@@ -20,7 +20,7 @@ class ContentArea extends React.Component {
 
         return(
             <React.Fragment>
-                <div className="root-div">
+                <div className="root-div my-background">
 
                     <Home/>
 

@@ -26,19 +26,21 @@
 ---
 #TO-DO LIST
 
-- [ ] findShow():
-    - [ ] first let user search by show name
-        - [ ] return an array of possible shows (id, title, picture[, year])
-    - [ ] user will select the correct show
-- [ ] css on popularShows, on Home.js: i want each button's contents (ie showName) to be center vertically and horizontally inside the button.
+
+- [ ] css on popularShows, on Home.js: i want each button's contents (ie showName) to be centered vertically and horizontally inside the button.
+- [x] findShow():
+    - [x] first let user search by show name
+        - [x] return an array of possible shows (id, title, picture[, year])
+    - [x] user will select the correct show
 - [x] install [unofficial imdb api](https://www.npmjs.com/package/imdb-api)
-- [ ] form: let ppl search shows by title (imdb api)
-- [ ] re-work front-end logic: 
-    - [ ] pull show details from imdb api: 
-        - [ ] show title, 
-        - [ ] pic, 
-        - [ ] seasons, 
-        - [ ] episodes per season, 
+- [x] use tmdb api instead
+- [x] form: let ppl search shows by title (imdb api)
+- [x] re-work front-end logic: 
+    - [x] pull show details from tmdb/imdb api: 
+        - [x] show title, 
+        - [x] pic, 
+        - [x] seasons, 
+        - [x] episodes per season, 
         - [ ] episode title, 
         - [ ] air date, 
         - [ ] episode length, 

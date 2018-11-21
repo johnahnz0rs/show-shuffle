@@ -34,4 +34,21 @@ module.exports = {
         }
     },
 
+    getShowDetails: (req, res) => {
+        if (req.method === 'GET') {
+            // code
+            console.log('*** getShowDetails() ***', req.body);
+            const query = `https://api.themoviedb.org/3/tv/${req.params.id}?api_key=${process.env.TMDB_KEY}&language=en-US`;
+            request.get(query, function(err, show) {
+               if (err) {
+                   console.log('lol', err);
+                   return res.json(err);
+               } else {
+                   console.log('*** sending show ***', show);
+                   return res.json(show);
+               }
+            });
+        }
+    },
+
 };
