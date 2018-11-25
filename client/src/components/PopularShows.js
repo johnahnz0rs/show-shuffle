@@ -4,10 +4,14 @@ class PopularShows extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+
+        };
         //declare methods here
         this.chooseShow = this.chooseShow.bind(this);
     }
+
+    componentDidMount() { }
 
     chooseShow = (e) => {
         // const show = e.target.name;
